@@ -35,7 +35,7 @@ function apiProcessing(message) {
   const apiDomain = "https://wsapi.simsimi.com";
   const path = "/190410/talk";
   const endpoint = proxy + apiDomain + path;
-  const apiKey = "12345";
+  const apiKey = process.env.APIKEY;
   const options = {
     method: "POST",
     headers: {
@@ -275,8 +275,8 @@ function guestMsgHandler(event) {
   event.preventDefault();
   const utext = drawMessageRequest();
   if (!utext) return;
-  //apiProcessing(utext);
-  testResponseOnly(utext);
+  apiProcessing(utext);
+  //testResponseOnly(utext);
 }
 
 //event listener --> sending message from guest
