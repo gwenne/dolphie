@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="shortcut icon" href="src/images/favicon.ico" type="image/x-icon" />
+    <title>dolphie</title>
+  </head>
+  <body>
+    <div id="special_features" class="special_features">
+      <select
+        name="language"
+        id="language"
+        class="language"
+        title="Select Language"
+      ></select>
+      <input
+        type="text"
+        name=""
+        id="search_text"
+        class="search_text"
+        placeholder="Search..."
+      />
+      <div id="search" class="search" title="Search Messages"></div>
+      <div id="bookmark" class="bookmark" title="Bookmarks"></div>
+      <div id="clear" class="clear" title="Clear Messages"></div>
+      <div id="tooltips" class="tooltips"></div>
+      <div id="close" class="close">x</div>
+    </div>
+    <div class="main">
+      <div id="messagearea" class="messagearea">
+        <div id="innermessagearea" class="innermessagearea"></div>
+      </div>
+      <form action="" class="message_form" id="message_form">
+        <textarea
+          name="messagebox"
+          cols="50"
+          rows="8"
+          id="messagebox"
+          class="messagebox"
+          placeholder="Enter message here..."
+        ></textarea>
+        <input type="submit" value="" id="send" class="send" title="Send" />
+      </form>
+    </div>
+    <audio id="audioDolphieResponse" src="src/audio/dolphin-chirp.mp3"></audio>
+    <audio id="audioGuestMsg" src="src/audio/send-alert.mp3"></audio>
+  </body>
+  <script type="module" src="src/js/dolphie.js"></script>
+</html>
