@@ -35,7 +35,7 @@ function apiProcessing(message) {
   const apiDomain = "https://wsapi.simsimi.com";
   const path = "/190410/talk";
   const endpoint = proxy + apiDomain + path;
-  const apiKey = "1znWSY6F6d._7nmYTUFuR9P6PRYf5dOmsoXMHubk";
+  const apiKey = "12345";
   const options = {
     method: "POST",
     headers: {
