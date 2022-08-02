@@ -35,7 +35,7 @@ function apiProcessing(message) {
   const apiDomain = "https://wsapi.simsimi.com";
   const path = "/190410/talk";
   const endpoint = proxy + apiDomain + path;
-  const apiKey = process.env.APIKEY;
+  const apiKey = process.env.DOLPHIE_APIKEY;
   const options = {
     method: "POST",
     headers: {
@@ -72,7 +72,7 @@ function testResponseOnly(message) {
   const response = {
     status: 200,
     statusMessage: "Ok",
-    atext: "Hello, I am simsimi. How are you?",
+    atext: "Hello, I am Dolphie. How are you?",
     lang: "en",
     request: {
       utext: message,
@@ -196,8 +196,21 @@ function displayBookmarkedMessages() {
   divTooltips.innerHTML = "";
   divTooltips.removeAttribute("title");
   const tableTooltips = document.createElement("table");
-  tableTooltips.setAttribute("id", "tooltips_table");
+  //tableTooltips.setAttribute("id", "tooltips_table");
   divTooltips.appendChild(tableTooltips);
+
+  const tableHeadTooltips = document.createElement("thead");
+  //tableHeadTooltips.setAttribute("id", "tooltips_thead");
+  tableTooltips.appendChild(tableHeadTooltips);
+
+  const trHeadTooltip = document.createElement("tr");
+  const tdHeadTooltip = document.createElement("td");
+  tdHeadTooltip.innerHTML = "Bookmarked Messages";
+  trHeadTooltip.appendChild(tdHeadTooltip);
+  tableHeadTooltips.appendChild(trHeadTooltip);
+  tdHeadTooltip.style.textAlign = "center";
+  tdHeadTooltip.style.fontWeight = "bolder";
+
   for (let x = 0; x < bookmarkedMsgsArray.length; x++) {
     const trTooltip = document.createElement("tr");
     const tdTooltip = document.createElement("td");
@@ -275,8 +288,8 @@ function guestMsgHandler(event) {
   event.preventDefault();
   const utext = drawMessageRequest();
   if (!utext) return;
-  apiProcessing(utext);
-  //testResponseOnly(utext);
+  //apiProcessing(utext);
+  testResponseOnly(utext);
 }
 
 //event listener --> sending message from guest
