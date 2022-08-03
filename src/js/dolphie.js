@@ -201,11 +201,9 @@ function displayBookmarkedMessages() {
   divTooltips.innerHTML = "";
   divTooltips.removeAttribute("title");
   const tableTooltips = document.createElement("table");
-  //tableTooltips.setAttribute("id", "tooltips_table");
   divTooltips.appendChild(tableTooltips);
 
   const tableHeadTooltips = document.createElement("thead");
-  //tableHeadTooltips.setAttribute("id", "tooltips_thead");
   tableTooltips.appendChild(tableHeadTooltips);
 
   const trHeadTooltip = document.createElement("tr");
@@ -233,6 +231,7 @@ function displayBookmarkedMessages() {
   closeButton.style.display = "block";
 }
 
+//Setting No Bookmark Message display when no msgs have been bookmark before access Bookmarks popout
 function cleanUpBookmarkList() {
   const divTooltips = document.getElementById("tooltips");
   divTooltips.innerHTML = "No Bookmarked Messages";
@@ -313,8 +312,3 @@ const bookmarkButton = document.querySelector("#bookmark");
 bookmarkButton.addEventListener("click", displayBookmarkedMessages);
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
-
-function hidePopOut(){
-  const divTooltips = document.getElementById("tooltips");
-  divTooltips.style.display = "none";
-}
