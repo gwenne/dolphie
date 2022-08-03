@@ -82,7 +82,7 @@ function turnResIntoObject(res) {
 }
 
 function handleData(data) {
-  drawResponse(`${data[0].q} <br>- ${data[0].a}`);
+  drawResponse(`${data[0].q} - ${data[0].a}`);
 }
 
 fetch(endpoint).then(turnResIntoObject).then(handleData);
@@ -193,6 +193,7 @@ function bookmarkMessage(event) {
   targetMsgBubble.classList.remove("highlight");
 }
 
+
 //display popout for the list of bookmarked messages
 function displayBookmarkedMessages() {
   const divTooltips = document.getElementById("tooltips");
@@ -208,7 +209,7 @@ function displayBookmarkedMessages() {
   tableTooltips.appendChild(tableHeadTooltips);
 
   const trHeadTooltip = document.createElement("tr");
-  const tdHeadTooltip = document.createElement("td");
+  const tdHeadTooltip = document.createElement("th");
   tdHeadTooltip.innerHTML = "Bookmarked Messages";
   trHeadTooltip.appendChild(tdHeadTooltip);
   tableHeadTooltips.appendChild(trHeadTooltip);
@@ -219,7 +220,7 @@ function displayBookmarkedMessages() {
     const trTooltip = document.createElement("tr");
     const tdTooltip = document.createElement("td");
     tdTooltip.innerHTML = "> " + bookmarkedMsgsArray[x];
-    tdTooltip.setAttribute("title", bookmarkedMsgsArray[x].replace(/<br>/g, ""));
+    tdTooltip.setAttribute("title", bookmarkedMsgsArray[x]);
     trTooltip.appendChild(tdTooltip);
     tableTooltips.appendChild(trTooltip);
     divTooltips.style.textAlign = "left";
@@ -312,3 +313,8 @@ const bookmarkButton = document.querySelector("#bookmark");
 bookmarkButton.addEventListener("click", displayBookmarkedMessages);
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
+
+function hidePopOut(){
+  const divTooltips = document.getElementById("tooltips");
+  divTooltips.style.display = "none";
+}
