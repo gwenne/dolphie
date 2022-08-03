@@ -310,6 +310,15 @@ td {
   border-bottom: 1px solid #1dc4f6;
   cursor: pointer;
 }
+th {
+  padding-bottom: 4px;
+  font-weight: bolder;
+}
+
+td:hover {
+  font-size: large;
+  color: red;
+}
 
 .shake {
   animation: shake 0.5s;
