@@ -1,4 +1,9 @@
+//require("dotenv").config();
+//console.log(process.env.DOLPHIE_APIKEY);
 import { languageArray } from "./language.js";
+const DOLPHIE_APIKEY = '****';
+
+
 
 //adding items to the combo select for language options
 function languageSelection() {
@@ -35,7 +40,7 @@ function apiProcessing(message) {
   const apiDomain = "https://wsapi.simsimi.com";
   const path = "/190410/talk";
   const endpoint = proxy + apiDomain + path;
-  const apiKey = process.env.DOLPHIE_APIKEY;
+  const apiKey = DOLPHIE_APIKEY;
   const options = {
     method: "POST",
     headers: {
@@ -47,39 +52,41 @@ function apiProcessing(message) {
       lang: lang,
     }),
   };
-  fetch(endpoint, options)
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      drawResponse(data.atext);
-    })
-    .catch((error) => {
-      console.error(error);
-      alert(error);
-    });
+
+function turnResIntoObject(res) {
+  return res.json();
 }
 
-//test response only so I dont consume all the 100 api requests limit
-function testResponseOnly(message) {
-  const lang = document.querySelector("#language").value;
-  let langCode;
-  for (let x = 0; x < languageArray.length; x++) {
-    if (languageArray[x][0] === lang) {
-      langCode = languageArray[x][1];
-    }
-  }
-  const response = {
-    status: 200,
-    statusMessage: "Ok",
-    atext: "Hello, I am Dolphie. How are you?",
-    lang: "en",
-    request: {
-      utext: message,
-      lang: langCode,
-    },
-  };
-  drawResponse(response.atext);
+function handleData(data) {
+  drawResponse(data.atext);
+}
+
+function handleError(error){
+  console.error(error);
+  alert(error);
+}
+
+fetch(endpoint, options).then(turnResIntoObject).then(handleData).catch(handleError);
+
+}
+
+//test response only so I dont consume all the 100 api requests limit of the chatbot
+function testResponseOnly() {
+const proxy = "https://cors-anywhere.herokuapp.com/";
+const domain = "https://zenquotes.io";
+const path = "/api/random";
+const endpoint = proxy + domain + path;
+
+function turnResIntoObject(res) {
+  return res.json();
+}
+
+function handleData(data) {
+  drawResponse(`${data[0].q} <br>- ${data[0].a}`);
+}
+
+fetch(endpoint).then(turnResIntoObject).then(handleData);
+  
 }
 
 //check if a string is empty
@@ -87,10 +94,8 @@ const isEmpty = (str) => !str.trim().length;
 
 // drawing msg bubble for the response of the dolphie bot
 function drawResponse(response) {
-  console.log(`initial response is = ${response}`);
   if (response.search(/Simsimi/i) > -1) {
     response = response.replace(/Simsimi/i, "Dolphie");
-    console.log(`response is  now = ${response}`);
   }
   const divInnerMsgArea = document.querySelector("#innermessagearea");
   const divMsgMain = document.createElement("div");
@@ -182,7 +187,6 @@ function bookmarkMessage(event) {
     targetMsgBubble.setAttribute("title", "Bookmark Message");
   } else {
     bookmarkedMsgsArray.push(targetMsgBubble.innerHTML);
-    console.log(targetMsgBubble);
     targetMsgBubble.classList.add("bookmarked");
     targetMsgBubble.setAttribute("title", "Remove Bookmark");
   }
@@ -215,7 +219,7 @@ function displayBookmarkedMessages() {
     const trTooltip = document.createElement("tr");
     const tdTooltip = document.createElement("td");
     tdTooltip.innerHTML = "> " + bookmarkedMsgsArray[x];
-    tdTooltip.setAttribute("title", bookmarkedMsgsArray[x]);
+    tdTooltip.setAttribute("title", bookmarkedMsgsArray[x].replace(/<br>/g, ""));
     trTooltip.appendChild(tdTooltip);
     tableTooltips.appendChild(trTooltip);
     divTooltips.style.textAlign = "left";
@@ -248,7 +252,6 @@ function closeBookmarkPopout() {
 //highlight msg bubble when clicked from the bookmark popout
 function highlightMessageBubble(event) {
   const targetMsg = event.target.title;
-  console.log(targetMsg);
   const divMsgArrays = document.querySelectorAll(".msgbubbleleft");
   let index;
   if (divMsgArrays.length > 0) {
@@ -289,7 +292,7 @@ function guestMsgHandler(event) {
   const utext = drawMessageRequest();
   if (!utext) return;
   //apiProcessing(utext);
-  testResponseOnly(utext);
+  testResponseOnly();
 }
 
 //event listener --> sending message from guest
