@@ -13,7 +13,7 @@ I called him "Dolphie" because we all know Dolphins are real smart creatures and
 Current scope
 - Send/receive messages
 - Audio when msgs are sent and received
-- Language selection
+- Support for multiple languages
 - Search for messages
 - Bookmark messages and highlight them when accessed
 - Clear chat window to restart conversation
@@ -23,3 +23,4 @@ Future scope:
 - Include emojis
 - Allow for email sending of the Chat transcript
 - Download chat transcript to a pdf file
+- Include Modal window to explain what the system does for new visitors
