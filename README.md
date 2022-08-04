@@ -19,7 +19,7 @@ Current scope
 - Clear chat window to restart conversation
 
 
-Future scope:
+Future scope
 - Include emojis
 - Allow for email sending of the Chat transcript
 - Download chat transcript to a pdf file
