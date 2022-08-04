@@ -1,9 +1,7 @@
-//require("dotenv").config();
-//console.log(process.env.DOLPHIE_APIKEY);
-import { languageArray } from "./language.js";
-const DOLPHIE_APIKEY = '****';
-
-
+import languageArray from "./language";
+import imageDolphie from '../images/dolphie.png';
+import imageGuest from '../images/guest.png';
+import { apiProcessing, testResponseOnly } from "./api";
 
 //adding items to the combo select for language options
 function languageSelection() {
@@ -19,7 +17,7 @@ function languageSelection() {
 languageSelection();
 
 //get language selected
-function selectedLanguage() {
+export function selectedLanguage() {
   //get language code
   const lang = document.querySelector("#language").value;
   let langCode;
@@ -31,69 +29,11 @@ function selectedLanguage() {
   return langCode;
 }
 
-// function to send request to API and receive response
-function apiProcessing(message) {
-  //get selected language to use for the api request
-  const lang = selectedLanguage();
-  //api request
-  const proxy = "https://cors-anywhere.herokuapp.com/";
-  const apiDomain = "https://wsapi.simsimi.com";
-  const path = "/190410/talk";
-  const endpoint = proxy + apiDomain + path;
-  const apiKey = DOLPHIE_APIKEY;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": apiKey,
-    },
-    body: JSON.stringify({
-      utext: message,
-      lang: lang,
-    }),
-  };
-
-function turnResIntoObject(res) {
-  return res.json();
-}
-
-function handleData(data) {
-  drawResponse(data.atext);
-}
-
-function handleError(error){
-  console.error(error);
-  alert(error);
-}
-
-fetch(endpoint, options).then(turnResIntoObject).then(handleData).catch(handleError);
-
-}
-
-//test response only so I dont consume all the 100 api requests limit of the chatbot
-function testResponseOnly() {
-const proxy = "https://cors-anywhere.herokuapp.com/";
-const domain = "https://zenquotes.io";
-const path = "/api/random";
-const endpoint = proxy + domain + path;
-
-function turnResIntoObject(res) {
-  return res.json();
-}
-
-function handleData(data) {
-  drawResponse(`${data[0].q} - ${data[0].a}`);
-}
-
-fetch(endpoint).then(turnResIntoObject).then(handleData);
-  
-}
-
 //check if a string is empty
 const isEmpty = (str) => !str.trim().length;
 
 // drawing msg bubble for the response of the dolphie bot
-function drawResponse(response) {
+export function drawResponse(response) {
   if (response.search(/Simsimi/i) > -1) {
     response = response.replace(/Simsimi/i, "Dolphie");
   }
@@ -102,7 +42,8 @@ function drawResponse(response) {
   divMsgMain.classList.add("divMsgMain");
 
   const imgDolphie = document.createElement("img");
-  imgDolphie.setAttribute("src", "src/images/dolphie.png");
+  //imgDolphie.setAttribute("src", "src/images/dolphie.png");
+  imgDolphie.setAttribute("src", imageDolphie); // had to do thid for parcel to load the image
   imgDolphie.classList.add("imgDolphie", "shake");
   divMsgMain.appendChild(imgDolphie);
 
@@ -131,7 +72,8 @@ function drawMessageRequest() {
   divMsgMain.appendChild(divMsg);
 
   const imgGuest = document.createElement("img");
-  imgGuest.setAttribute("src", "src/images/guest.png");
+  //imgGuest.setAttribute("src", "src/images/guest.png");
+  imgGuest.setAttribute("src", imageGuest); // had to do thid for parcel to load the image
   imgGuest.classList.add("imgGuest");
   divMsgMain.appendChild(imgGuest);
   divInnerMsgArea.appendChild(divMsgMain);
@@ -148,7 +90,7 @@ function scrollLocation() {
   divInnerMsgArea.scrollTop = divInnerMsgArea.scrollHeight;
 }
 
-//function to search the msg bubbles based on the keyword enter in search field
+//function to search the msg bubbles based on the keyword entered in search field
 function searchMsgs() {
   const searchText = document.querySelector("#search_text").value;
   const divMsgArrays = document.querySelectorAll(".msgbubbles");

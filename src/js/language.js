@@ -1,4 +1,4 @@
-export const languageArray = [
+const languageArray = [
   ["English", "en"],
   ["Afrikaans", "af"],
   ["Albanian", "al"],
@@ -81,3 +81,6 @@ export const languageArray = [
   ["Vietnamese", "vn"],
   ["Welsh", "cy"],
 ];
+
+
+export default languageArray;
