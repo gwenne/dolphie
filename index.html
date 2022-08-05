@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/style.css" />
-    <link rel="shortcut icon" href="src/images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="src/images/favicon.ico"
+      type="image/x-icon"
+    />
     <title>dolphie</title>
   </head>
   <body>
@@ -27,7 +31,7 @@
       <div id="bookmark" class="bookmark" title="Bookmarks"></div>
       <div id="clear" class="clear" title="Clear Messages"></div>
       <div id="tooltips" class="tooltips"></div>
-      <div id="close" class="close">x</div>
+      <div id="close" class="close">&times;</div>
     </div>
     <div class="main">
       <div id="messagearea" class="messagearea">
@@ -45,6 +49,20 @@
         <input type="submit" value="" id="send" class="send" title="Send" />
       </form>
     </div>
+    <div
+      id="clickmeforinstructions"
+      class="clickmeforinstructions"
+      title="Click for instructions"
+    ></div>
+    <!-- <div id="instructionsImage" class="instructionsImage_onloadDisplay"></div> -->
+
+    <div id="instructionsImage" class="modal">
+      <div class="modal-content">
+        <span class="closeInstructionPopOut">&times;</span>
+        <img src="src/images/instruction-details.png" alt="Instructions" />
+      </div>
+    </div>
+
     <audio id="audioDolphieResponse" src="src/audio/dolphin-chirp.mp3"></audio>
     <audio id="audioGuestMsg" src="src/audio/send-alert.mp3"></audio>
   </body>
