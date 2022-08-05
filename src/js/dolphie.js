@@ -1,7 +1,8 @@
 import languageArray from "./language";
-import imageDolphie from '../images/dolphie.png';
-import imageGuest from '../images/guest.png';
+import imageDolphie from "../images/dolphie.png";
+import imageGuest from "../images/guest.png";
 import { apiProcessing, testResponseOnly } from "./api";
+import { instructionsModal, spanClicked } from "./instructions";
 
 //adding items to the combo select for language options
 function languageSelection() {
@@ -135,7 +136,6 @@ function bookmarkMessage(event) {
   targetMsgBubble.classList.remove("highlight");
 }
 
-
 //display popout for the list of bookmarked messages
 function displayBookmarkedMessages() {
   const divTooltips = document.getElementById("tooltips");
@@ -191,8 +191,16 @@ function closeBookmarkPopout() {
   }
 }
 
+function clearAllHighlights() {
+  const divMsgArrays = document.querySelectorAll(".msgbubbles");
+  for (let x = 0; x < divMsgArrays.length; x++) {
+    divMsgArrays[x].classList.remove("highlight");
+  }
+}
+
 //highlight msg bubble when clicked from the bookmark popout
 function highlightMessageBubble(event) {
+  clearAllHighlights();
   const targetMsg = event.target.title;
   const divMsgArrays = document.querySelectorAll(".msgbubbleleft");
   let index;
@@ -230,16 +238,20 @@ function clearMsgArea() {
 
 //function that will call the functions to draw bubbles for guest and dolphie bot
 function guestMsgHandler(event) {
-  event.preventDefault();
-  const utext = drawMessageRequest();
-  if (!utext) return;
-  //apiProcessing(utext);
-  testResponseOnly();
+  if (event.type === "submit" || (event.key === "Enter" && !event.shiftKey)) {
+    event.preventDefault();
+    const utext = drawMessageRequest();
+    if (!utext) return;
+    apiProcessing(utext);
+    //testResponseOnly();
+  }
 }
 
 //event listener --> sending message from guest
 const sendMsgButton = document.querySelector("form");
 sendMsgButton.addEventListener("submit", guestMsgHandler);
+const sendMsgOnEnterMsgBox = document.querySelector(".messagebox");
+sendMsgOnEnterMsgBox.addEventListener("keypress", guestMsgHandler);
 //event listener --> search keyword from all msg bubbles
 const searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", searchMsgs);
@@ -254,3 +266,10 @@ const bookmarkButton = document.querySelector("#bookmark");
 bookmarkButton.addEventListener("click", displayBookmarkedMessages);
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
+//pop out instruction details
+const divInstructionButton = document.getElementById("clickmeforinstructions");
+divInstructionButton.addEventListener("click", instructionsModal);
+const closeModalButton = document.getElementsByClassName(
+  "closeInstructionPopOut"
+)[0];
+closeModalButton.addEventListener("click", spanClicked);

@@ -3,7 +3,7 @@ import { drawResponse, selectedLanguage } from "./dolphie";
 // function to send request to API and receive response
 function apiProcessing(message) {
   //get selected language to use for the api request
-  const lang = selectedLanguage()
+  const lang = selectedLanguage();
   //api request
   const proxy = "https://cors-anywhere.herokuapp.com/";
   const apiDomain = "https://wsapi.simsimi.com";
@@ -22,42 +22,46 @@ function apiProcessing(message) {
     }),
   };
 
-function turnResIntoObject(res) {
-  return res.json();
+  function turnResIntoObject(res) {
+    return res.json();
+  }
+
+  function handleData(data) {
+    drawResponse(data.atext);
+  }
+
+  function handleError(error) {
+    console.error(error);
+    alert(error);
+  }
+
+  fetch(endpoint, options)
+    .then(turnResIntoObject)
+    .then(handleData)
+    .catch(handleError);
 }
-
-function handleData(data) {
-  drawResponse(data.atext);
-}
-
-function handleError(error){
-  console.error(error);
-  alert(error);
-}
-
-fetch(endpoint, options).then(turnResIntoObject).then(handleData).catch(handleError);
-
-}
-
-
 
 //test response only so I dont consume all the 100 api requests limit of the chatbot
 function testResponseOnly() {
-const proxy = "https://cors-anywhere.herokuapp.com/";
-const domain = "https://zenquotes.io";
-const path = "/api/random";
-const endpoint = proxy + domain + path;
+  const proxy = "https://cors-anywhere.herokuapp.com/";
+  const domain = "https://zenquotes.io";
+  const path = "/api/random";
+  const endpoint = proxy + domain + path;
 
-function turnResIntoObject(res) {
-  return res.json();
+  function turnResIntoObject(res) {
+    return res.json();
+  }
+
+  function handleData(data) {
+    drawResponse(`${data[0].q} - ${data[0].a}`);
+  }
+
+  function handleError(error) {
+    console.error(error);
+    alert(error);
+  }
+
+  fetch(endpoint).then(turnResIntoObject).then(handleData).catch(handleError);
 }
 
-function handleData(data) {
-  drawResponse(`${data[0].q} - ${data[0].a}`);
-}
-
-fetch(endpoint).then(turnResIntoObject).then(handleData);
-  
-}
-
-export {apiProcessing, testResponseOnly};
+export { apiProcessing, testResponseOnly };
