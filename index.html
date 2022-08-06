@@ -35,16 +35,37 @@
         title="Search Messages"
         tabindex="0"
       ></div>
-      <div id="bookmark" class="bookmark" title="Bookmarks" tabindex="0"></div>
-      <div id="clear" class="clear" title="Clear Messages" tabindex="0"></div>
+      <div
+        id="bookmark"
+        class="bookmark"
+        title="Bookmarks"
+        tabindex="0"
+        aria-label="Bookmarks"
+      ></div>
       <div id="tooltips" class="tooltips"></div>
-      <div id="close" class="close">&times;</div>
+      <div
+        id="close"
+        class="close"
+        aria-label="Close Bookmarks"
+        title="Close Bookmarks"
+        tabindex="0"
+      >
+        &times;
+      </div>
     </div>
+    <div
+      id="clear"
+      class="clear"
+      title="Clear Messages"
+      tabindex="0"
+      aria-label="Clear Messages"
+    ></div>
     <div
       id="clickmeforinstructions"
       class="clickmeforinstructions"
       title="Click for instructions"
       tabindex="0"
+      aria-label="Click for instructions"
     ></div>
     <!-- The Modal Image-->
     <div id="myModal" class="modal">
@@ -52,6 +73,8 @@
         class="closeInstructionPopOut"
         id="closeInstructionPopOut"
         tabindex="0"
+        aria-label="Close Instructions"
+        title="Close Instructions"
         >&times;</span
       >
       <img
