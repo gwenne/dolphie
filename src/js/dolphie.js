@@ -2,7 +2,7 @@ import languageArray from "./language";
 import imageDolphie from "../images/dolphie.png";
 import imageGuest from "../images/guest.png";
 import { apiProcessing, testResponseOnly } from "./api";
-import { instructionsModal, spanClicked } from "./instructions";
+import { instructionsModal, closeModal } from "./instructions";
 
 //adding items to the combo select for language options
 function languageSelection() {
@@ -112,13 +112,6 @@ function searchMsgs() {
   }
 }
 
-//search handler for keyup = Enter event
-function searchMsgsKeyUpHandler(event) {
-  if (event.key === "Enter") {
-    searchMsgs();
-  }
-}
-
 //bookmark message from bot dolphie
 let bookmarkedMsgsArray = [];
 function bookmarkMessage(event) {
@@ -139,6 +132,10 @@ function bookmarkMessage(event) {
 //display popout for the list of bookmarked messages
 function displayBookmarkedMessages() {
   const divTooltips = document.getElementById("tooltips");
+  if (getComputedStyle(divTooltips).display === "block") {
+    closeBookmarkPopout();
+    return;
+  }
   const closeButton = document.getElementById("close");
   divTooltips.innerHTML = "";
   divTooltips.removeAttribute("title");
@@ -238,38 +235,76 @@ function clearMsgArea() {
 
 //function that will call the functions to draw bubbles for guest and dolphie bot
 function guestMsgHandler(event) {
-  if (event.type === "submit" || (event.key === "Enter" && !event.shiftKey)) {
-    event.preventDefault();
-    const utext = drawMessageRequest();
-    if (!utext) return;
-    apiProcessing(utext);
-    //testResponseOnly();
+  event.preventDefault();
+  const utext = drawMessageRequest();
+  if (!utext) return;
+  //apiProcessing(utext);
+  testResponseOnly();
+}
+
+//search handler for keyup = Enter event
+function keyPressHandler(event) {
+  const eventId = event.target.id;
+  console.log(eventId);
+  if (event.key === "Enter") {
+    switch (eventId) {
+      case "search_text":
+        searchMsgs();
+        break;
+      case "search":
+        searchMsgs();
+        break;
+      case "send":
+        guestMsgHandler(event);
+        break;
+      case "messagebox":
+        if (!event.shiftKey) {
+          guestMsgHandler(event);
+        }
+        break;
+      case "clear":
+        clearMsgArea();
+        break;
+      case "bookmark":
+        displayBookmarkedMessages();
+        break;
+      case "clickmeforinstructions":
+        instructionsModal();
+        break;
+      case "closeInstructionPopOut":
+        closeModal();
+    }
   }
 }
 
-//event listener --> sending message from guest
+//event listener --> sending message from guest, enter or click
 const sendMsgButton = document.querySelector("form");
 sendMsgButton.addEventListener("submit", guestMsgHandler);
+sendMsgButton.addEventListener("keypress", keyPressHandler);
 const sendMsgOnEnterMsgBox = document.querySelector(".messagebox");
-sendMsgOnEnterMsgBox.addEventListener("keypress", guestMsgHandler);
+sendMsgOnEnterMsgBox.addEventListener("keypress", keyPressHandler);
 //event listener --> search keyword from all msg bubbles
 const searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", searchMsgs);
+searchButton.addEventListener("keypress", keyPressHandler);
 //event listener --> search keyword when enter key is pressed
 const searchTextField = document.querySelector("#search_text");
-searchTextField.addEventListener("keyup", searchMsgsKeyUpHandler);
+searchTextField.addEventListener("keypress", keyPressHandler);
 //event listener --> clear/reset message
 const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", clearMsgArea);
+clearButton.addEventListener("keypress", keyPressHandler);
 //event listener --> show bookmarked messages
 const bookmarkButton = document.querySelector("#bookmark");
 bookmarkButton.addEventListener("click", displayBookmarkedMessages);
+bookmarkButton.addEventListener("keypress", keyPressHandler);
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
-//pop out instruction details
+//pop out modal for instruction details
 const divInstructionButton = document.getElementById("clickmeforinstructions");
 divInstructionButton.addEventListener("click", instructionsModal);
-const closeModalButton = document.getElementsByClassName(
-  "closeInstructionPopOut"
-)[0];
-closeModalButton.addEventListener("click", spanClicked);
+divInstructionButton.addEventListener("keypress", keyPressHandler);
+//close modal pop out for instructions
+const closeModalButton = document.querySelector(".closeInstructionPopOut");
+closeModalButton.addEventListener("click", closeModal);
+closeModalButton.addEventListener("keypress", keyPressHandler);
