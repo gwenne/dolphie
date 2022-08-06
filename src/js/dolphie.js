@@ -193,6 +193,7 @@ export function closeBookmarkPopout() {
   }
 }
 
+//removes highlights on all message bubbles
 function clearAllHighlights() {
   const divMsgArrays = document.querySelectorAll(".msgbubbles");
   for (let x = 0; x < divMsgArrays.length; x++) {
