@@ -1,3 +1,5 @@
+import { closeBookmarkPopout } from "./dolphie";
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -5,6 +7,7 @@ var modal = document.getElementById("myModal");
 export function instructionsModal() {
   modal.style.display = "block";
   modal.children[0].focus();
+  closeBookmarkPopout();
 }
 
 // When the user clicks on <span> (x), close the modal

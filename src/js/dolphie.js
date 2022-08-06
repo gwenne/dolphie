@@ -3,7 +3,9 @@ import imageDolphie from "../images/dolphie.png";
 import imageGuest from "../images/guest.png";
 import { apiProcessing, testResponseOnly } from "./api";
 import { instructionsModal, closeModal } from "./instructions";
+import { emojis } from "./emojis";
 
+emojis();
 //adding items to the combo select for language options
 function languageSelection() {
   let comboLanguage = document.getElementById("language");
@@ -38,6 +40,9 @@ export function drawResponse(response) {
   if (response.search(/Simsimi/i) > -1) {
     response = response.replace(/Simsimi/i, "Dolphie");
   }
+  if (isEmpty(response)) {
+    return;
+  }
   const divInnerMsgArea = document.querySelector("#innermessagearea");
   const divMsgMain = document.createElement("div");
   divMsgMain.classList.add("divMsgMain");
@@ -50,7 +55,7 @@ export function drawResponse(response) {
 
   const divMsg = document.createElement("div");
   divMsg.innerHTML = response;
-  divMsg.classList.add("msgbubbleleft", "atext", "msgbubbles", "shake");
+  divMsg.classList.add("msgbubbleleft", "atext", "msgbubbles");
   divMsg.setAttribute("title", "Bookmark Message");
   divMsg.addEventListener("click", bookmarkMessage);
   divMsgMain.appendChild(divMsg);
@@ -179,7 +184,7 @@ function cleanUpBookmarkList() {
 }
 
 //adding close(x) button on the pop out for the bookmarks
-function closeBookmarkPopout() {
+export function closeBookmarkPopout() {
   const divTooltips = document.getElementById("tooltips");
   const closeButton = document.getElementById("close");
   if (getComputedStyle(divTooltips).display === "block") {
@@ -301,6 +306,7 @@ clearButton.addEventListener("keypress", keyPressHandler);
 const bookmarkButton = document.querySelector("#bookmark");
 bookmarkButton.addEventListener("click", displayBookmarkedMessages);
 bookmarkButton.addEventListener("keypress", keyPressHandler);
+//event listener --> close bookmarks pop out
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
 closeButton.addEventListener("keypress", keyPressHandler);

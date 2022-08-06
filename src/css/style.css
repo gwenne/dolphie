@@ -1,7 +1,7 @@
 body {
   background-color: #99e5fc;
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
+  font-style: normal;
 }
 
 .main {
@@ -41,11 +41,11 @@ body {
   overflow: auto;
   position: relative;
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-style: normal;
 }
 
 .send {
@@ -103,7 +103,6 @@ body {
   right: 220px;
   position: absolute;
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
   border-radius: 4px;
 }
 
@@ -153,7 +152,6 @@ body {
   position: absolute;
   border-radius: 4px;
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
 }
 
 img {
@@ -185,9 +183,15 @@ img {
   float: left;
   margin-top: 0px;
 }
+
 .imgGuest {
   float: right;
   margin-top: -55px;
+}
+
+.msgbubbles {
+  animation-name: zoom;
+  animation-duration: 1s;
 }
 
 .msgbubbleleft {
@@ -313,6 +317,7 @@ td {
 th {
   padding-bottom: 4px;
   font-weight: bolder;
+  border-bottom: 1px solid #1dc4f6;
 }
 
 td:hover {
@@ -361,34 +366,34 @@ td:hover {
     transform: translate(1px, 1px) rotate(0deg);
   }
   10% {
-    transform: translate(-1px, -2px) rotate(-1deg);
+    transform: translate(-1px, -2px) rotate(-10deg);
   }
   20% {
-    transform: translate(-3px, 0px) rotate(1deg);
+    transform: translate(-3px, 0px) rotate(10deg);
   }
   30% {
     transform: translate(3px, 2px) rotate(0deg);
   }
   40% {
-    transform: translate(1px, -1px) rotate(1deg);
+    transform: translate(1px, -1px) rotate(10deg);
   }
   50% {
-    transform: translate(-1px, 2px) rotate(-1deg);
+    transform: translate(-1px, 2px) rotate(-10deg);
   }
   60% {
     transform: translate(-3px, 1px) rotate(0deg);
   }
   70% {
-    transform: translate(3px, 1px) rotate(-1deg);
+    transform: translate(3px, 1px) rotate(-10deg);
   }
   80% {
-    transform: translate(-1px, -1px) rotate(1deg);
+    transform: translate(-1px, -1px) rotate(10deg);
   }
   90% {
     transform: translate(1px, 2px) rotate(0deg);
   }
   100% {
-    transform: translate(1px, -2px) rotate(-1deg);
+    transform: translate(1px, -2px) rotate(-10deg);
   }
 }
 
@@ -448,4 +453,19 @@ td:hover {
   .modal-content {
     width: 100%;
   }
+}
+
+.emojis {
+  font-style: normal;
+  position: relative;
+  top: 84%;
+  left: 16%;
+  display: inline-block;
+  max-width: 85%;
+}
+
+a:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  font-size: larger;
 }
