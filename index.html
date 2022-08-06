@@ -19,6 +19,7 @@
         id="language"
         class="language"
         title="Select Language"
+        tabindex="0"
       ></select>
       <input
         type="text"
@@ -26,12 +27,38 @@
         id="search_text"
         class="search_text"
         placeholder="Search..."
+        tabindex="0"
       />
-      <div id="search" class="search" title="Search Messages"></div>
-      <div id="bookmark" class="bookmark" title="Bookmarks"></div>
-      <div id="clear" class="clear" title="Clear Messages"></div>
+      <div
+        id="search"
+        class="search"
+        title="Search Messages"
+        tabindex="0"
+      ></div>
+      <div id="bookmark" class="bookmark" title="Bookmarks" tabindex="0"></div>
+      <div id="clear" class="clear" title="Clear Messages" tabindex="0"></div>
       <div id="tooltips" class="tooltips"></div>
       <div id="close" class="close">&times;</div>
+    </div>
+    <div
+      id="clickmeforinstructions"
+      class="clickmeforinstructions"
+      title="Click for instructions"
+      tabindex="0"
+    ></div>
+    <!-- The Modal Image-->
+    <div id="myModal" class="modal">
+      <span
+        class="closeInstructionPopOut"
+        id="closeInstructionPopOut"
+        tabindex="0"
+        >&times;</span
+      >
+      <img
+        class="modal-content"
+        id="instructionsImg"
+        src="src/images/instruction-details.png"
+      />
     </div>
     <div class="main">
       <div id="messagearea" class="messagearea">
@@ -49,20 +76,6 @@
         <input type="submit" value="" id="send" class="send" title="Send" />
       </form>
     </div>
-    <div
-      id="clickmeforinstructions"
-      class="clickmeforinstructions"
-      title="Click for instructions"
-    ></div>
-    <!-- <div id="instructionsImage" class="instructionsImage_onloadDisplay"></div> -->
-
-    <div id="instructionsImage" class="modal">
-      <div class="modal-content">
-        <span class="closeInstructionPopOut">&times;</span>
-        <img src="src/images/instruction-details.png" alt="Instructions" />
-      </div>
-    </div>
-
     <audio id="audioDolphieResponse" src="src/audio/dolphin-chirp.mp3"></audio>
     <audio id="audioGuestMsg" src="src/audio/send-alert.mp3"></audio>
   </body>
