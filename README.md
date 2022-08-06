@@ -17,10 +17,14 @@ Current scope
 - Search for messages
 - Bookmark messages and highlight them when accessed
 - Clear chat window to restart conversation
+- Instructions Modal Image that show how to use the chat window
+- Support for emojis
+- Accesibility Handlers for Keypress
+
+
 
 
 Future scope
-- Include emojis
 - Allow for email sending of the Chat transcript
 - Download chat transcript to a pdf file
-- Include Modal window to explain what the system does for new visitors
+- Interface with Google Search API
