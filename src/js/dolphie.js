@@ -273,6 +273,9 @@ function keyPressHandler(event) {
         break;
       case "closeInstructionPopOut":
         closeModal();
+        break;
+      case "close":
+        closeBookmarkPopout();
     }
   }
 }
@@ -300,6 +303,7 @@ bookmarkButton.addEventListener("click", displayBookmarkedMessages);
 bookmarkButton.addEventListener("keypress", keyPressHandler);
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click", closeBookmarkPopout);
+closeButton.addEventListener("keypress", keyPressHandler);
 //pop out modal for instruction details
 const divInstructionButton = document.getElementById("clickmeforinstructions");
 divInstructionButton.addEventListener("click", instructionsModal);
