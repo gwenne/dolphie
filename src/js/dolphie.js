@@ -61,9 +61,36 @@ export function drawResponse(response) {
   divMsgMain.appendChild(divMsg);
   divInnerMsgArea.appendChild(divMsgMain);
   scrollLocation();
-  const dolphieChirpAudio = document.querySelector("#audioDolphieResponse");
-  dolphieChirpAudio.play();
+  playSound("dolphie");
 }
+//sound setting check
+function playSound(type) {
+  const soundButton = document.getElementById("sound_settings");
+  if (!soundButton.classList.contains("soundOff")) {
+    if (type == "dolphie") {
+      const dolphieChirpAudio = document.querySelector("#audioDolphieResponse");
+      dolphieChirpAudio.play();
+    } else {
+      const sendMsgAlert = document.querySelector("#audioGuestMsg");
+      sendMsgAlert.play();
+    }
+  }
+}
+
+//turn on/off Dolpie Chriping sound
+function soundHandler() {
+  const soundButton = document.getElementById("sound_settings");
+  if (soundButton.classList.contains("soundOff")) {
+    soundButton.classList.remove("soundOff");
+    soundButton.setAttribute("title", "Turn Sound Off");
+    soundButton.setAttribute("aria-label", "Turn Sound Off");
+  } else {
+    soundButton.classList.add("soundOff");
+    soundButton.setAttribute("title", "Turn Sound On");
+    soundButton.setAttribute("aria-label", "Turn Sound On");
+  }
+}
+
 // drawing the msg bubble for the Guest's msg
 function drawMessageRequest() {
   const textMsg = document.querySelector("#messagebox");
@@ -79,13 +106,12 @@ function drawMessageRequest() {
 
   const imgGuest = document.createElement("img");
   //imgGuest.setAttribute("src", "src/images/guest.png");
-  imgGuest.setAttribute("src", imageGuest); // had to do thid for parcel to load the image
+  imgGuest.setAttribute("src", imageGuest); // had to do this for parcel to load the image
   imgGuest.classList.add("imgGuest");
   divMsgMain.appendChild(imgGuest);
   divInnerMsgArea.appendChild(divMsgMain);
   scrollLocation();
-  const sendMsgAlert = document.querySelector("#audioGuestMsg");
-  sendMsgAlert.play();
+  playSound("guest");
 
   textMsg.value = "";
   return divMsg.innerHTML;
@@ -282,6 +308,9 @@ function keyPressHandler(event) {
         break;
       case "close":
         closeBookmarkPopout();
+        break;
+      case "sound_settings":
+        soundHandler();
     }
   }
 }
@@ -319,3 +348,7 @@ divInstructionButton.addEventListener("keypress", keyPressHandler);
 const closeModalButton = document.querySelector(".closeInstructionPopOut");
 closeModalButton.addEventListener("click", closeModal);
 closeModalButton.addEventListener("keypress", keyPressHandler);
+//event listener for turning on and off sound
+const soundButton = document.getElementById("sound_settings");
+soundButton.addEventListener("click", soundHandler);
+soundButton.addEventListener("keypress", soundHandler);

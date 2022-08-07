@@ -337,25 +337,6 @@ td:hover {
   position: absolute;
 }
 
-.instructionsImage_onloadDisplay {
-  display: none;
-}
-
-.instructionsImage {
-  height: 85%;
-  width: 90%;
-  background-image: url("../images/instruction-details.png");
-  background-size: cover;
-  cursor: pointer;
-  border: 5px solid #1dc4f6;
-  margin-top: 2%;
-  margin-left: 5%;
-  position: absolute;
-  z-index: 10;
-  border-radius: 6px;
-  filter: drop-shadow(8px 6px 0px rgba(0, 0, 0, 0.2));
-}
-
 .shake {
   animation: shake 0.5s;
   animation-iteration-count: 6;
@@ -468,4 +449,19 @@ a:hover {
   opacity: 0.5;
   cursor: pointer;
   font-size: larger;
+}
+
+.sound_settings {
+  height: 30px;
+  width: 35px;
+  background-image: url("../images/sound-on.png");
+  background-size: cover;
+  cursor: pointer;
+  top: 0%;
+  left: 0%;
+}
+
+.soundOff {
+  background-image: url("../images/sound-off.png") !important;
+  height: 35px;
 }
