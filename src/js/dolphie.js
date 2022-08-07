@@ -4,8 +4,11 @@ import imageGuest from "../images/guest.png";
 import { apiProcessing, testResponseOnly } from "./api";
 import { instructionsModal, closeModal } from "./instructions";
 import { emojis } from "./emojis";
+import { downloadPDF } from "./downloadPDF";
 
+//drawing emojis
 emojis();
+
 //adding items to the combo select for language options
 function languageSelection() {
   let comboLanguage = document.getElementById("language");
@@ -277,7 +280,6 @@ function guestMsgHandler(event) {
 //search handler for keyup = Enter event
 function keyPressHandler(event) {
   const eventId = event.target.id;
-  console.log(eventId);
   if (event.key === "Enter") {
     switch (eventId) {
       case "search_text":
@@ -311,6 +313,9 @@ function keyPressHandler(event) {
         break;
       case "sound_settings":
         soundHandler();
+        break;
+      case "download":
+        downloadPDF();
     }
   }
 }
@@ -352,3 +357,7 @@ closeModalButton.addEventListener("keypress", keyPressHandler);
 const soundButton = document.getElementById("sound_settings");
 soundButton.addEventListener("click", soundHandler);
 soundButton.addEventListener("keypress", soundHandler);
+//event listener for downloading chat transcript to pdf
+const downloadPDFButton = document.getElementById("download");
+downloadPDFButton.addEventListener("click", downloadPDF);
+downloadPDFButton.addEventListener("keypress", downloadPDF);

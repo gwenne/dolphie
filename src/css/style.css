@@ -100,7 +100,7 @@ body {
   height: 20px;
   width: auto;
   top: 25px;
-  right: 220px;
+  right: 255px;
   position: absolute;
   font-family: Georgia, Times, "Times New Roman", serif;
   border-radius: 4px;
@@ -114,7 +114,7 @@ body {
   cursor: pointer;
   border: 0;
   top: 22px;
-  right: 187px;
+  right: 222px;
   position: absolute;
 }
 
@@ -126,7 +126,18 @@ body {
   cursor: pointer;
   border: 0;
   top: 22px;
-  right: 158px;
+  right: 193px;
+  position: absolute;
+}
+.download {
+  height: 30px;
+  width: 30px;
+  background-image: url("../images/download.png");
+  background-size: cover;
+  cursor: pointer;
+  border: 0;
+  top: 22px;
+  right: 161px;
   position: absolute;
 }
 
