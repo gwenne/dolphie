@@ -60,6 +60,10 @@ body {
   margin-left: 5px;
 }
 
+.send:hover {
+  opacity: 0.5;
+}
+
 .messagearea {
   height: auto;
   width: auto;
@@ -118,6 +122,10 @@ body {
   position: absolute;
 }
 
+.search:hover {
+  opacity: 0.5;
+}
+
 .bookmark {
   height: 30px;
   width: 30px;
@@ -129,6 +137,11 @@ body {
   right: 14.8%;
   position: absolute;
 }
+
+.bookmark:hover {
+  opacity: 0.5;
+}
+
 .download {
   height: 30px;
   width: 30px;
@@ -141,6 +154,10 @@ body {
   position: absolute;
 }
 
+.download:hover {
+  opacity: 0.5;
+}
+
 .clear {
   height: 30px;
   width: 30px;
@@ -151,6 +168,9 @@ body {
   top: 5%;
   right: 10%;
   position: absolute;
+}
+.clear:hover {
+  opacity: 0.5;
 }
 
 .language {
@@ -350,6 +370,10 @@ td:hover {
   position: absolute;
 }
 
+.clickmeforinstructions:hover {
+  opacity: 0.5;
+}
+
 .shake {
   animation: shake 0.5s;
   animation-iteration-count: 6;
@@ -473,6 +497,10 @@ a:hover {
   cursor: pointer;
   top: 0%;
   left: 0%;
+}
+
+.sound_settings:hover {
+  opacity: 0.5;
 }
 
 .soundOff {

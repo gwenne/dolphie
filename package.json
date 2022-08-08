@@ -1,0 +1,29 @@
+{
+  "name": "dolphie",
+  "version": "1.0.0",
+  "description": "chatbot for small talk",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwenne/dolphie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwenne/dolphie/issues"
+  },
+  "homepage": "https://github.com/gwenne/dolphie#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "jspdf": "^2.5.1"
+  }
+}
