@@ -62,10 +62,24 @@ export function drawResponse(response) {
   divMsg.setAttribute("title", "Bookmark Message");
   divMsg.addEventListener("click", bookmarkMessage);
   divMsgMain.appendChild(divMsg);
+
+  const pDateNow = displayDate("left");
+  divMsgMain.appendChild(pDateNow);
   divInnerMsgArea.appendChild(divMsgMain);
   scrollLocation();
   playSound("dolphie");
 }
+
+//date handler
+function displayDate(location) {
+  const pDateNow = document.createElement("p");
+  const dateValue = new Date().toString();
+  const index = dateValue.indexOf("+");
+  pDateNow.innerHTML = dateValue.substring(0, index - 4);
+  pDateNow.setAttribute("class", location);
+  return pDateNow;
+}
+
 //sound setting check
 function playSound(type) {
   const soundButton = document.getElementById("sound_settings");
@@ -112,7 +126,11 @@ function drawMessageRequest() {
   imgGuest.setAttribute("src", imageGuest); // had to do this for parcel to load the image
   imgGuest.classList.add("imgGuest");
   divMsgMain.appendChild(imgGuest);
+
+  const pDateNow = displayDate("right");
+  divMsgMain.appendChild(pDateNow);
   divInnerMsgArea.appendChild(divMsgMain);
+
   scrollLocation();
   playSound("guest");
 
