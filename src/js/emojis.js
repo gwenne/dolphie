@@ -33,6 +33,7 @@ export function emojis() {
     "😠",
     "😡",
     "🤬",
+    "😈",
     "🤯",
     "😱",
     "😨",
@@ -45,22 +46,21 @@ export function emojis() {
     "🤫",
     "🤥",
     "😶",
-    "👋",
-    "🤚", 
-    "🖐", 
-    "✋", 
-    "🖖", 
-    "👌", 
-    "🤌", 
-    "🤏",
-    "🤞",
-    "🤟",
-    "🤘",
-    "🤙",
-    "👈",
-    "👉",
-    "👆",
-    "👇",
+    "🥱",
+    "😴",
+    "🤤",
+    "😪",
+    "😵",
+    "🤐",
+    "🥴",
+    "🤢",
+    "🤮",
+    "🤧",
+    "😷",
+    "🤒",
+    "🤕",
+    "🤑",
+    "🤠",
   ];
   // clear drawn emojis
   while (emojisMainDiv.firstChild) {
@@ -77,6 +77,7 @@ export function emojis() {
   }
 }
 
+//append the emojis to the value of the msg text area
 function appendEmojis(event) {
   const emoji = event.target.id;
   const messagebox = document.getElementById("messagebox");

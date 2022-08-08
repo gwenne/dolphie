@@ -8,7 +8,7 @@ body {
   width: auto;
   background-color: #fff;
   position: fixed;
-  top: 10%;
+  top: 12%;
   right: 10%;
   bottom: 10%;
   left: 10%;
@@ -100,8 +100,7 @@ body {
   height: 20px;
   width: auto;
   top: 5.4%;
-  right: 16.8%;
-  left: 74%;
+  right: 19.5%;
   position: absolute;
   font-family: Georgia, Times, "Times New Roman", serif;
   border-radius: 4px;
@@ -115,8 +114,7 @@ body {
   cursor: pointer;
   border: 0;
   top: 5%;
-  right: 15%;
-  left: 83.5%;
+  right: 17%;
   position: absolute;
 }
 
@@ -128,8 +126,7 @@ body {
   cursor: pointer;
   border: 0;
   top: 5%;
-  right: 13.5%;
-  left: 85%;
+  right: 14.8%;
   position: absolute;
 }
 .download {
@@ -140,8 +137,7 @@ body {
   cursor: pointer;
   border: 0;
   top: 5%;
-  right: 11.8%;
-  left: 86.8%;
+  right: 12.5%;
   position: absolute;
 }
 
@@ -154,7 +150,6 @@ body {
   border: 0;
   top: 5%;
   right: 10%;
-  left: 88.6%;
   position: absolute;
 }
 
@@ -228,7 +223,7 @@ img {
 .msgbubbleright {
   -webkit-border-radius: 4px;
   border-radius: 10px 10px 0px 10px;
-  margin: 0px 5.5% 10px 75%; 
+  margin: 0px 0px 10px 60%;
   filter: drop-shadow(6px 4px 0px rgba(0, 0, 0, 0.2));
 }
 
@@ -494,6 +489,5 @@ p.left {
 }
 
 p.right {
-  margin-right: 5.5%;
-  margin-left: 75%;
+  margin-left: 60%;
 }
