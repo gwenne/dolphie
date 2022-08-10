@@ -291,8 +291,8 @@ function guestMsgHandler(event) {
   event.preventDefault();
   const utext = drawMessageRequest();
   if (!utext) return;
-  apiProcessing(utext);
-  //testResponseOnly();
+  //apiProcessing(utext);
+  testResponseOnly();
 }
 
 //search handler for keyup = Enter event
@@ -339,8 +339,8 @@ function keyPressHandler(event) {
 }
 
 //event listener --> sending message from guest, enter or click
-const sendMsgButton = document.querySelector("form");
-sendMsgButton.addEventListener("submit", guestMsgHandler);
+const sendMsgButton = document.querySelector("#send");
+sendMsgButton.addEventListener("click", guestMsgHandler);
 sendMsgButton.addEventListener("keypress", keyPressHandler);
 const sendMsgOnEnterMsgBox = document.querySelector(".messagebox");
 sendMsgOnEnterMsgBox.addEventListener("keypress", keyPressHandler);
