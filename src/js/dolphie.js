@@ -291,8 +291,8 @@ function guestMsgHandler(event) {
   event.preventDefault();
   const utext = drawMessageRequest();
   if (!utext) return;
-  //apiProcessing(utext);
-  testResponseOnly();
+  apiProcessing(utext);
+  //testResponseOnly();
 }
 
 //search handler for keyup = Enter event
