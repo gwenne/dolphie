@@ -183,51 +183,46 @@ function bookmarkMessage(event) {
 
 //display popout for the list of bookmarked messages
 function displayBookmarkedMessages() {
-  const divTooltips = document.getElementById("tooltips");
-  if (getComputedStyle(divTooltips).display === "block") {
+  const divBookmarks = document.getElementById("tooltips");
+  if (getComputedStyle(divBookmarks).display === "block") {
     closeBookmarkPopout();
     return;
   }
-  const closeButton = document.getElementById("close");
-  divTooltips.innerHTML = "";
-  divTooltips.removeAttribute("title");
-  const tableTooltips = document.createElement("table");
-  divTooltips.appendChild(tableTooltips);
 
-  const tableHeadTooltips = document.createElement("thead");
-  tableTooltips.appendChild(tableHeadTooltips);
+  divBookmarks.innerHTML = "";
+  divBookmarks.removeAttribute("title");
 
-  const trHeadTooltip = document.createElement("tr");
-  const tdHeadTooltip = document.createElement("th");
-  tdHeadTooltip.innerHTML = "Bookmarked Messages";
-  trHeadTooltip.appendChild(tdHeadTooltip);
-  tableHeadTooltips.appendChild(trHeadTooltip);
-  tdHeadTooltip.style.textAlign = "center";
-  tdHeadTooltip.style.fontWeight = "bolder";
+  const dlBookmarksFirst = document.createElement("dl");
+  dlBookmarksFirst.innerHTML = "Bookmarked Messages";
+  dlBookmarksFirst.style.textAlign = "center";
+  dlBookmarksFirst.style.fontWeight = "bolder";
+  divBookmarks.appendChild(dlBookmarksFirst);
+
+  const dlBookmarks = document.createElement("dl");
+  divBookmarks.appendChild(dlBookmarks);
 
   for (let x = 0; x < bookmarkedMsgsArray.length; x++) {
-    const trTooltip = document.createElement("tr");
-    const tdTooltip = document.createElement("td");
-    tdTooltip.innerHTML = "> " + bookmarkedMsgsArray[x];
-    tdTooltip.setAttribute("title", bookmarkedMsgsArray[x]);
-    trTooltip.appendChild(tdTooltip);
-    tableTooltips.appendChild(trTooltip);
-    divTooltips.style.textAlign = "left";
-    tdTooltip.addEventListener("click", highlightMessageBubble);
+    const dtBookmark = document.createElement("dt");
+    dtBookmark.innerHTML = "> " + bookmarkedMsgsArray[x];
+    dtBookmark.setAttribute("title", bookmarkedMsgsArray[x]);
+    dlBookmarks.appendChild(dtBookmark);
+    divBookmarks.style.textAlign = "left";
+    dtBookmark.addEventListener("click", highlightMessageBubble);
   }
   if (bookmarkedMsgsArray.length === 0) {
     cleanUpBookmarkList();
   }
-  divTooltips.style.display = "block";
+  divBookmarks.style.display = "block";
+  const closeButton = document.getElementById("close");
   closeButton.style.display = "block";
 }
 
 //Setting No Bookmark Message display when no msgs have been bookmark before access Bookmarks popout
 function cleanUpBookmarkList() {
-  const divTooltips = document.getElementById("tooltips");
-  divTooltips.innerHTML = "No Bookmarked Messages";
-  divTooltips.style.textAlign = "center";
-  divTooltips.setAttribute("title", divTooltips.innerHTML);
+  const divBookmarks = document.getElementById("tooltips");
+  divBookmarks.innerHTML = "No Bookmarked Messages";
+  divBookmarks.style.textAlign = "center";
+  divBookmarks.setAttribute("title", divBookmarks.innerHTML);
 }
 
 //adding close(x) button on the pop out for the bookmarks

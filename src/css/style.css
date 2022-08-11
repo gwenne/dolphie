@@ -65,8 +65,6 @@ body {
 }
 
 .messagearea {
-  height: auto;
-  width: auto;
   position: absolute;
   top: 5%;
   right: 2.5%;
@@ -74,10 +72,6 @@ body {
   left: 2.5%;
   background-color: #d7dbdd;
   border-radius: 6px;
-  padding-left: 1%;
-  padding-right: 50%;
-  padding-top: 20px;
-  padding-bottom: 100px;
   font-size: small;
 }
 
@@ -295,7 +289,7 @@ img {
 
 .tooltips {
   display: none;
-  height: 15%;
+  height: auto;
   width: 20%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -312,7 +306,7 @@ img {
   cursor: pointer;
   z-index: 3;
   left: 75%;
-  top: 9%;
+  top: 10%;
   text-align: left;
 }
 
@@ -329,38 +323,25 @@ div.close {
   cursor: pointer;
   font-size: 25px;
 }
-table {
-  width: 100%;
-  height: 100%;
-}
 
-tr {
-  vertical-align: top;
-}
-td {
+dt {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 98%;
   padding: 1px;
   cursor: pointer;
-  position: absolute;
   display: block;
 }
-th {
-  padding-bottom: 4px;
-  font-weight: bolder;
-  border-bottom: 1px solid #1dc4f6;
-}
 
-td:hover {
+dt:hover {
   font-size: large;
-  color: red;
+  /*color: red; */
 }
 
 .clickmeforinstructions {
-  height: 90px;
-  width: 70px;
+  height: 75px;
+  width: 60px;
   background-image: url("../images/instructions.png");
   background-size: cover;
   cursor: pointer;
@@ -476,7 +457,7 @@ td:hover {
 .emojis {
   font-style: normal;
   position: relative;
-  top: 84%;
+  top: 87.5%;
   left: 0%;
   display: inline-block;
   width: 100%;
