@@ -290,7 +290,6 @@ function guestMsgHandler(event) {
 //search handler for keyup = Enter event
 function keyPressHandler(event) {
   const eventId = event.target.id;
-  console.log(eventId);
   if (event.key === "Enter") {
     switch (eventId) {
       case "search_text":
@@ -382,6 +381,7 @@ downloadPDFButton.addEventListener("keypress", keyPressHandler);
 const emojiButton = document.getElementById("emojiOne");
 emojiButton.addEventListener("click", drawEmojis);
 emojiButton.addEventListener("keypress", keyPressHandler);
+// event listener for the close buttons's emoji window
 const emojiCloseButton = document.getElementById("closeEmoji");
 emojiCloseButton.addEventListener("click", closeEmojiPopout);
 emojiCloseButton.addEventListener("keypress", keyPressHandler);

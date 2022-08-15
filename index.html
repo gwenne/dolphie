@@ -122,13 +122,14 @@
           placeholder="Enter message here..."
         ></textarea>
         <input type="button" id="send" class="send" title="Send" value="" />
-        <input
-          type="button"
+        <div
           id="emojiOne"
           class="emojiOne"
           title="Emojis"
           value=""
-        />
+          tabindex="0"
+          aria-label="Select Emojis"
+        ></div>
       </form>
     </div>
     <audio id="audioDolphieResponse" src="src/audio/dolphin-chirp.mp3"></audio>
