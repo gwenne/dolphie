@@ -4,6 +4,18 @@ body {
   font-style: normal;
 }
 
+p {
+  font-size: xx-small;
+}
+
+p.left {
+  margin-left: 70px;
+}
+
+p.right {
+  margin-left: 60%;
+}
+
 .main {
   width: auto;
   background-color: #fff;
@@ -455,19 +467,44 @@ dt:hover {
 }
 
 .emojis {
+  display: none;
   font-style: normal;
   position: relative;
-  top: 87.5%;
-  left: 0%;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
+  top: 30%;
+  bottom: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: auto;
+  text-align: left;
+  border: 2px solid;
+  border-radius: 6px;
+  border-color: #1dc4f6;
+  z-index: 10;
+  padding: 10px;
+  padding-right: 2px;
+  background-color: #f0f6f3;
+  font-size: medium;
+}
+
+div.closeEmoji {
+  z-index: 10;
+  top: 28.3%;
+  left: 70.8%;
+  position: absolute;
+  color: red;
+  font-weight: normal;
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 a:hover {
   opacity: 0.5;
   cursor: pointer;
-  font-size: larger;
+  font-size: large;
 }
 
 .sound_settings {
@@ -489,14 +526,19 @@ a:hover {
   height: 35px;
 }
 
-p {
-  font-size: xx-small;
+.emojiOne {
+  height: 25px;
+  width: 40px;
+  background-image: url("../images/emoji.png");
+  background-size: cover;
+  cursor: pointer;
+  border: 0;
+  background-color: Transparent;
+  position: absolute;
+  margin-left: 5px;
+  top: 90%;
 }
 
-p.left {
-  margin-left: 70px;
-}
-
-p.right {
-  margin-left: 60%;
+.emojiOne:hover {
+  opacity: 0.5;
 }

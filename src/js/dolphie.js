@@ -3,11 +3,8 @@ import imageDolphie from "../images/dolphie.png";
 import imageGuest from "../images/guest.png";
 import { apiProcessing, testResponseOnly } from "./api";
 import { instructionsModal, closeModal } from "./instructions";
-import { emojis } from "./emojis";
+import { closeEmojiPopout, drawEmojis } from "./emojis";
 import { downloadPDF } from "./downloadPDF";
-
-//drawing emojis
-emojis();
 
 //adding items to the combo select for language options
 function languageSelection() {
@@ -293,6 +290,7 @@ function guestMsgHandler(event) {
 //search handler for keyup = Enter event
 function keyPressHandler(event) {
   const eventId = event.target.id;
+  console.log(eventId);
   if (event.key === "Enter") {
     switch (eventId) {
       case "search_text":
@@ -329,6 +327,12 @@ function keyPressHandler(event) {
         break;
       case "download":
         downloadPDF();
+        break;
+      case "emojiOne":
+        drawEmojis();
+        break;
+      case "closeEmoji":
+        closeEmojiPopout();
     }
   }
 }
@@ -369,8 +373,15 @@ closeModalButton.addEventListener("keypress", keyPressHandler);
 //event listener for turning on and off sound
 const soundButton = document.getElementById("sound_settings");
 soundButton.addEventListener("click", soundHandler);
-soundButton.addEventListener("keypress", soundHandler);
+soundButton.addEventListener("keypress", keyPressHandler);
 //event listener for downloading chat transcript to pdf
 const downloadPDFButton = document.getElementById("download");
 downloadPDFButton.addEventListener("click", downloadPDF);
-downloadPDFButton.addEventListener("keypress", downloadPDF);
+downloadPDFButton.addEventListener("keypress", keyPressHandler);
+// event listener for emojis
+const emojiButton = document.getElementById("emojiOne");
+emojiButton.addEventListener("click", drawEmojis);
+emojiButton.addEventListener("keypress", keyPressHandler);
+const emojiCloseButton = document.getElementById("closeEmoji");
+emojiCloseButton.addEventListener("click", closeEmojiPopout);
+emojiCloseButton.addEventListener("keypress", keyPressHandler);

@@ -101,6 +101,15 @@
       <div id="messagearea" class="messagearea">
         <div id="innermessagearea" class="innermessagearea"></div>
         <div id="emojis" class="emojis"></div>
+        <div
+          id="closeEmoji"
+          class="closeEmoji"
+          aria-label="Close Emoji Window"
+          title="Close"
+          tabindex="0"
+        >
+          &times;
+        </div>
       </div>
 
       <form action="" class="message_form" id="message_form">
@@ -113,6 +122,13 @@
           placeholder="Enter message here..."
         ></textarea>
         <input type="button" id="send" class="send" title="Send" value="" />
+        <input
+          type="button"
+          id="emojiOne"
+          class="emojiOne"
+          title="Emojis"
+          value=""
+        />
       </form>
     </div>
     <audio id="audioDolphieResponse" src="src/audio/dolphin-chirp.mp3"></audio>

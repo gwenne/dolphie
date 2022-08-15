@@ -49,7 +49,7 @@ function handleTokenError(error) {
     const msgText =
       "You have not been permitted to use Dolphie. \n" +
       "Click OK to request access. \n\n" +
-      "Note: You may need to enable pop out on your browser.";
+      "Note: You may need to disable Pop-up Blocker on your browser.";
     if (window.confirm(msgText)) {
       const url = "https://cors-anywhere.herokuapp.com/corsdemo";
       const windowName = "Token Permission Request";
