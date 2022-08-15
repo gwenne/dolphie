@@ -482,7 +482,7 @@ dt:hover {
   border-color: #1dc4f6;
   z-index: 10;
   padding: 10px;
-  padding-right: 2px;
+  padding-right: 5px;
   background-color: #f0f6f3;
   font-size: medium;
 }
