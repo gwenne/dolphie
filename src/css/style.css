@@ -485,12 +485,13 @@ dt:hover {
   padding-right: 5px;
   background-color: #f0f6f3;
   font-size: medium;
+  line-height: 25px;
 }
 
 div.closeEmoji {
   z-index: 10;
-  top: 28.3%;
-  left: 70.8%;
+  top: 28%;
+  left: 71%;
   position: absolute;
   color: red;
   font-weight: normal;
