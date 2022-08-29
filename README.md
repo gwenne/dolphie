@@ -25,3 +25,9 @@ Current scope
 
 Future scope
 - Interface with Google Search API
+
+
+Required Packages
+jspdf -> npm install jspdf --save
+parcel -> npm install parcel --save-dev
+dotenv -> npm install dotenv --save
